@@ -178,8 +178,8 @@
     $("num").textContent = $("cur").textContent = pad(i + 1);
     $("prev").disabled = i === 0; $("next").disabled = i === SCREENS.length - 1;
     [...strip.children].forEach((c, n) => c.setAttribute("aria-current", n === i ? "true" : "false"));
-    const t = strip.children[i];
-    strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.clientWidth) / 2, behavior: "smooth" });
+    const th = strip.children[i];
+    strip.scrollTo({ left: th.offsetLeft - (strip.clientWidth - th.clientWidth) / 2, behavior: "smooth" });
     if (i + 1 < SCREENS.length) new Image().src = `img/${pad(i + 2)}.jpg`;
     try { history.replaceState(null, "", "#" + pad(i + 1)); } catch (e) {}
   }
