@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ClawCal Product Screens</title>
+<meta name="description" content="Full-size screenshots of the ClawCal prototype, Smart India Hackathon 2026 (SIH26117), Team Circuit Breaker_SE.">
+<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@500;600;700&display=swap">
+<style>
+  :root {
+    --ground: #EEF0F2;
+    --surface: #FFFFFF;
+    --ink: #0B0B0C;
+    --text: #1F2227;
+    --muted: #474B52;
+    --line: #D4D6DA;
+    --accent: #E8722A;
+    --accent-ink: #B4530F;
+    --chip: #E3E5E8;
+    --shadow: 0 1px 2px rgba(15, 18, 22, .06), 0 12px 32px rgba(15, 18, 22, .10);
+    --wordmark-filter: none;
+    --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", Consolas, ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #111315; --surface: #1A1D20; --ink: #F2F3F4; --text: #E3E5E8; --muted: #B4B8BE;
+      --line: #33373C; --accent: #F08A45; --accent-ink: #F5A06A; --chip: #262A2E;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45); --wordmark-filter: invert(1);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #111315; --surface: #1A1D20; --ink: #F2F3F4; --text: #E3E5E8; --muted: #B4B8BE;
+    --line: #33373C; --accent: #F08A45; --accent-ink: #F5A06A; --chip: #262A2E;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45); --wordmark-filter: invert(1);
+  }
+
+  body { background: var(--ground); color: var(--text); font-family: var(--sans); }
+  .app { display: flex; flex-direction: column; gap: 10px; padding-inline: 16px; padding-block: 12px 12px; }
+
+  header { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .brand img { height: 22px; width: auto; filter: var(--wordmark-filter); }
+  .brand span { font-size: 14px; font-weight: 600; color: var(--muted); letter-spacing: .02em; }
+  .count { font-family: var(--mono); font-weight: 600; font-size: 15px; color: var(--muted);
+           font-variant-numeric: tabular-nums; }
+  .count b { color: var(--accent-ink); font-weight: 600; }
+
+  .stage { position: relative; }
+  .frame { width: 100%; }
+  .frame button { all: unset; cursor: zoom-in; display: block; width: 100%; border-radius: 12px; }
+  .frame button:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .frame img { display: block; width: 100%; height: auto;
+               border-radius: 12px; border: 1px solid var(--line); background: #fff; box-shadow: var(--shadow); }
+  .nav { all: unset; box-sizing: border-box; position: absolute; top: 50%; translate: 0 -50%; z-index: 2; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center;
+         background: var(--surface); border: 1px solid var(--line); color: var(--ink); cursor: pointer; box-shadow: var(--shadow);
+         transition: transform .15s ease, border-color .15s ease; }
+  #prev { left: 10px; } #next { right: 10px; }
+  .nav:hover { border-color: var(--accent); transform: scale(1.05); }
+  .nav:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .nav:disabled { opacity: .35; cursor: default; transform: none; border-color: var(--line); }
+  .nav svg { width: 22px; height: 22px; }
+
+  .caption { display: flex; gap: 14px; align-items: baseline; flex-wrap: wrap; }
+  .caption .num { font-family: var(--mono); font-weight: 600; font-size: 20px; color: var(--accent-ink); }
+  .caption h1 { margin: 0; font-size: clamp(18px, 1.7vw, 23px); font-weight: 700; color: var(--ink); line-height: 1.2; }
+  .caption p { margin: 0; flex: 1 1 420px; font-size: clamp(15px, 1.2vw, 17px); font-weight: 500; color: var(--text); line-height: 1.4; }
+  .hint { font-size: 13px; font-weight: 500; color: var(--muted); }
+
+  .strip { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 4px; scrollbar-width: thin; justify-content: safe center; }
+  .thumb { all: unset; flex: 0 0 auto; cursor: pointer; border-radius: 8px; border: 2px solid transparent; line-height: 0;
+           opacity: .7; transition: opacity .15s ease, border-color .15s ease; }
+  .thumb img { width: 92px; height: auto; border-radius: 6px; border: 1px solid var(--line); }
+  .thumb:hover { opacity: 1; }
+  .thumb[aria-current="true"] { opacity: 1; border-color: var(--accent); }
+  .thumb:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+  /* zoom: the screenshot at its real size, pannable */
+  .zoom { position: fixed; inset: 0; background: var(--ground); overflow: auto; z-index: 10; cursor: zoom-out;
+          padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .zoom img { max-width: none; width: 2600px; display: block; margin: 24px auto; border-radius: 10px; border: 1px solid var(--line); }
+  .zoom-bar { position: fixed; top: calc(14px + env(safe-area-inset-top, 0px)); right: 16px; display: flex; gap: 8px; z-index: 11; }
+  .zoom-bar span { font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px; background: var(--surface);
+                   border: 1px solid var(--line); color: var(--ink); box-shadow: var(--shadow); }
+
+  @media (max-width: 720px) {
+    .nav { width: 42px; height: 42px; }
+    .caption { gap: 4px 10px; }
+    .caption p { flex-basis: 100%; }
+    .hint { display: none; }
+    .thumb img { width: 72px; }
+    .zoom img { width: 1800px; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<div class="app">
+  <header>
+    <div class="brand">
+      <img src="wordmark.png" alt="ClawCal">
+      <span>Product screens · SIH26117 · Circuit Breaker_SE</span>
+    </div>
+    <div class="brand">
+      <span class="hint">← → or swipe · click a screen for full size</span>
+      <div class="count" aria-live="polite"><b id="cur">01</b> / <span id="tot">11</span></div>
+    </div>
+  </header>
+
+  <section class="caption">
+    <div class="num" id="num">01</div>
+    <h1 id="title"></h1>
+    <p id="desc"></p>
+  </section>
+
+  <main class="stage">
+    <button class="nav" id="prev" aria-label="Previous screen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <div class="frame">
+      <button id="zoomBtn" aria-label="View this screen at full size">
+        <img id="shot" src="img/01.jpg" alt="">
+      </button>
+    </div>
+    <button class="nav" id="next" aria-label="Next screen">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </main>
+
+  <nav class="strip" id="strip" aria-label="All screens"></nav>
+</div>
+
+<div class="zoom" id="zoom" hidden>
+  <div class="zoom-bar"><span>Scroll to pan · click or Esc to close</span></div>
+  <img id="zoomImg" alt="">
+</div>
+
+<script>
+  const SCREENS = [
+    ["Approval note, every figure cited", "Each figure links to the page and span it came from. 12 claims: 11 verified, 1 stripped. No source, no number."],
+    ["Scanned report, tagged by span", "OCR tags every region of the scanned inspection report with a span ID, so answers can cite the exact line."],
+    ["Knowledge base that stays on the node", "Documents stay on node-01. Every region OCR reads becomes a span that answers can cite."],
+    ["Models, selected per task", "Drop weights in: the registry verifies them, probes what they can do, and the router starts using them. No code change."],
+    ["Sealed sandbox: code runs with no network", "Code runs in a gVisor sandbox with network: none. A failing test is fixed, all 6 pass, and the Excel file is delivered."],
+    ["Engineering drawing: valve count", "24 valves: 18 manual, 5 control, 1 relief, plus 12 instrument tags. Line connectivity is out of scope, and it says so."],
+    ["Sovereignty: proof, not promises", "Egress is default-deny. 0 external connections allowed; every blocked attempt is logged with the process that made it."],
+    ["Devices: revoke a lost laptop", "Every device holds a lease from node-01. A revoked laptop seals at its next renewal or at lease expiry."],
+    ["Field laptop, fully offline", "Detached, with a lease and no corpus: gpt-oss-20b resident on an 8 GB GPU at 20.8 tok/s decode."],
+    ["Phone app: the same agent, offline", "Qwen3-4B resident, Qwen3-30B-A3B streamed on request. Consent is asked before anything leaves the phone."],
+    ["Schedules: unattended overnight jobs", "Jobs run unattended on node-01 under the same admission, sandbox and gate as interactive tasks."]
+  ];
+  const pad = n => String(n).padStart(2, "0");
+  const $ = id => document.getElementById(id);
+  const strip = $("strip"), shot = $("shot"), zoom = $("zoom"), zoomImg = $("zoomImg");
+  let i = 0;
+
+  SCREENS.forEach(([t], k) => {
+    const b = document.createElement("button");
+    b.className = "thumb"; b.setAttribute("aria-label", pad(k + 1) + " " + t);
+    b.innerHTML = `<img src="thumbs/${pad(k + 1)}.jpg" alt="" loading="lazy">`;
+    b.addEventListener("click", () => show(k));
+    strip.appendChild(b);
+  });
+  $("tot").textContent = pad(SCREENS.length);
+
+  function show(k) {
+    i = Math.max(0, Math.min(SCREENS.length - 1, k));
+    const [t, d] = SCREENS[i];
+    shot.src = `img/${pad(i + 1)}.jpg`; shot.alt = t;
+    $("title").textContent = t; $("desc").textContent = d;
+    $("num").textContent = $("cur").textContent = pad(i + 1);
+    $("prev").disabled = i === 0; $("next").disabled = i === SCREENS.length - 1;
+    [...strip.children].forEach((c, n) => c.setAttribute("aria-current", n === i ? "true" : "false"));
+    const t = strip.children[i];
+    strip.scrollTo({ left: t.offsetLeft - (strip.clientWidth - t.clientWidth) / 2, behavior: "smooth" });
+    if (i + 1 < SCREENS.length) new Image().src = `img/${pad(i + 2)}.jpg`;
+    try { history.replaceState(null, "", "#" + pad(i + 1)); } catch (e) {}
+  }
+
+  $("prev").addEventListener("click", () => show(i - 1));
+  $("next").addEventListener("click", () => show(i + 1));
+  $("zoomBtn").addEventListener("click", () => { zoomImg.src = shot.src; zoomImg.alt = shot.alt; zoom.hidden = false; zoom.scrollTo(0, 0); });
+  zoom.addEventListener("click", () => { zoom.hidden = true; });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") { zoom.hidden = true; return; }
+    if (!zoom.hidden) return;
+    if (e.key === "ArrowRight") show(i + 1);
+    if (e.key === "ArrowLeft") show(i - 1);
+  });
+  let x0 = null;
+  $("zoomBtn").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+  $("zoomBtn").addEventListener("touchend", e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) { e.preventDefault(); show(i + (dx < 0 ? 1 : -1)); }
+  });
+
+  const start = parseInt((location.hash || "").replace("#", ""), 10);
+  show(Number.isFinite(start) ? start - 1 : 0);
+</script>
+
+</body>
+</html>
